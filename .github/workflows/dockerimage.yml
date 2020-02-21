@@ -10,5 +10,5 @@ jobs:
     - name: Quay login
       run: echo "${{ secrets.QUAY_TOKEN }}" | docker login -u='${{ secrets.QUAY_USER }}' --password-stdin quay.io
     - name: Build images
-      run: make all
+      run: make all push
 
