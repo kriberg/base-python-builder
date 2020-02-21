@@ -1,0 +1,14 @@
+name: Docker Image CI
+on: [push]
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v1
+    - name: Install git
+      run: sudo apt-get install git
+    - name: Quay login
+      run: echo "${{ secrets.QUAY_TOKEN }}" | docker login -u='${{ secrets.QUAY_USER }}' --password-stdin quay.io
+    - name: Build images
+      run: make all
+
