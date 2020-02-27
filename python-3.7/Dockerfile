@@ -21,7 +21,7 @@ ENV PIP_INDEX https://pypi.org/pypi
 ENV PIP_INDEX_URL https://pypi.org/simple
 USER root
 RUN apt-get update
-RUN DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends docker.io docker-compose
+RUN DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends docker.io docker-compose make
 RUN rm -rf /var/lib/apt/lists/*
 RUN pip install poetry black
 CMD ["/bin/bash"]
