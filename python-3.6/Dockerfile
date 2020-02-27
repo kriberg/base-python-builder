@@ -24,7 +24,7 @@ RUN apt-get update
 RUN DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends docker.io docker-compose make && rm -rf /var/lib/apt/lists/*
 RUN pip install poetry black
 RUN groupadd -g 1005 jenkins
-RUN useradd -r -s /bin/bash -c "jenkins user" -d /app -u 1005 -g 1005 -G docker -m jenkins
+RUN useradd -r -s /bin/bash -c "jenkins user" -d /jenkins -u 1005 -g 1005 -G docker -m jenkins
 WORKDIR /app
 USER 1005:1005
 CMD ["/bin/bash"]
