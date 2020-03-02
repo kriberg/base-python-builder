@@ -20,7 +20,7 @@ all: 3.8 3.7 3.6
 		--build-arg BUILD_URL="$(BUILD_URL)" \
 		--build-arg GIT_URL="$(GIT_URL)" \
 		--build-arg GIT_COMMIT="$(GIT_COMMIT)" \
-		python-3.8/
+		-f python-3.8/Dockerfile .
 
 
 3.7:
@@ -35,7 +35,7 @@ all: 3.8 3.7 3.6
 		--build-arg BUILD_URL="$(BUILD_URL)" \
 		--build-arg GIT_URL="$(GIT_URL)" \
 		--build-arg GIT_COMMIT="$(GIT_COMMIT)" \
-		python-3.7/
+		-f python-3.7/Dockerfile .
 	
 3.6:
 	@echo "Building $(PYTHON_36)"
@@ -49,7 +49,7 @@ all: 3.8 3.7 3.6
 		--build-arg BUILD_URL="$(BUILD_URL)" \
 		--build-arg GIT_URL="$(GIT_URL)" \
 		--build-arg GIT_COMMIT="$(GIT_COMMIT)" \
-		python-3.6/
+		-f python-3.6/Dockerfile .
 
 push:
 	docker push quay.io/evryfs/base-python-builder:3.8
