@@ -23,11 +23,12 @@ USER root
 RUN apt-get update
 RUN DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends docker.io docker-compose make git && \
     rm -rf /var/lib/apt/lists/*
+RUN pip install poetry black virtualenv flake8 bandit pytest nose
 RUN groupadd -g 1005 jenkins
 RUN useradd -r -s /bin/bash -c "jenkins user" -d /jenkins -u 1005 -g 1005 -G docker -m jenkins
+RUN mkdir /.config /.cache
+RUN chmod 777 /.config /.cache
 WORKDIR /app
 USER 1005:1005
-RUN pip install --user poetry black virtualenv flake8 bandit pytest nose
-RUN poetry config virtualenvs.in-project true
 COPY flake8-black.ini /jenkins/.flake8
 CMD ["/bin/bash"]
