@@ -21,7 +21,7 @@ ENV PIP_INDEX https://pypi.org/pypi
 ENV PIP_INDEX_URL https://pypi.org/simple
 USER root
 RUN apt-get update
-RUN DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends docker.io docker-compose make git && \
+RUN DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends docker.io docker-compose make git gcc && \
     rm -rf /var/lib/apt/lists/*
 RUN pip install poetry black virtualenv flake8 bandit pytest nose
 RUN groupadd -g 1005 jenkins
